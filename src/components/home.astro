@@ -1,0 +1,85 @@
+---
+import LetterGlitch from "../React/LetterGlitch.tsx";
+import LogoWall from "../components/logoWall.astro";
+import SkillsList from "../React/SkillsList.tsx";
+import { Image } from "astro:assets";
+import teofil from "../../public/teofil.png";
+---
+
+<section class="text-[var(--white)] mt-12 md:mt-0" id="home">
+  <div class="max-w-5xl mx-auto space-y-8 md:py-36 pb-14">
+    <div class="text-left space-y-4">
+      <p class="text-md md:text-lg text-[var(--white-icon)] shiny-white">
+        Hi, I'm Alvin Santos.
+      </p>
+      <div
+        class="flex flex-col lg:flex-row lg:items-center space-y-4 lg:space-y-0 lg:space-x-8 md:gap-4"
+      >
+        <div class="flex flex-col space-y-4">
+          <h1
+            class="text-[var(--white)] text-5xl md:text-6xl font-medium text-pretty leading-none"
+          >
+            Software <br /> Engineer
+          </h1>
+          <div class="relative w-48 h-48">
+            <Image
+              src={teofil}
+              alt="Alvin Santos"
+              class="w-full h-full rounded-full object-cover border-2 border-[var(--sec)]"
+            />
+            <div
+              class="absolute inset-0 bg-[var(--bg)] rounded-full transition-opacity duration-300"
+              style="opacity: var(--loading-opacity, 1)"
+            >
+            </div>
+          </div>
+        </div>
+        <p class="text-md md:text-2xl text-[var(--white-icon)]">
+          I am a Senior Software Engineer with 8 years rich experience in
+          <span class="text-[var(--sec)] shiny-sec">Full stack</span> &
+          <span class="text-[var(--sec)] shiny-sec">Video-Streaming </span> &
+          <span class="text-[var(--sec)] shiny-sec">AI</span>
+        </p>
+      </div>
+    </div>
+
+    <LogoWall />
+
+    <div class="flex flex-col lg:flex-row items-center gap-8">
+      <SkillsList client:load />
+      <div
+        class="flex justify-center md:w-full md:h-[292px] size-[290px] pt-3 md:pt-9 md:ml-16"
+      >
+        <LetterGlitch
+          client:load
+          glitchColors={["#5e4491", "#A476FF", "#241a38"]}
+          glitchSpeed={33}
+          centerVignette={false}
+          outerVignette={true}
+          smooth={true}
+        />
+      </div>
+    </div>
+  </div>
+</section>
+
+<style is:global>
+  .shiny-sec {
+    background: linear-gradient(135deg, #a476ff 25%, #eee5ff 50%, #a476ff 75%);
+    background-size: 400% 100%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    animation: shine 3s linear infinite;
+  }
+
+  @keyframes shine {
+    0% {
+      background-position: 100% 50%;
+    }
+    30%,
+    70% {
+      background-position: 0% 50%;
+    }
+  }
+</style>
